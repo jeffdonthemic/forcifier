@@ -8,8 +8,8 @@ Gem::Specification.new do |s|
   s.authors     = ["Jeff Douglas"]
   s.email       = ["jeff@jeffdouglas.com"]
   s.homepage    = ""
-  s.summary     = %q{TODO: Write a gem summary}
-  s.description = %q{TODO: Write a gem description}
+  s.summary     = %q{Makes 'stuff' coming from Force.com pretty}
+  s.description = %q{Provides utility methods to make Force.com fields nicer such as removing '__c', lowercasing fields names, etc.}
 
   s.rubyforge_project = "forcifier"
 
