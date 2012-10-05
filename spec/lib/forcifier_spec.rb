@@ -32,7 +32,6 @@ describe Forcifier do
 
 	it "should deforce json with remote json correctly" do
     files = %w(1792 1792_results challenges challenges_ruby romin)
-
     files.each do |file|
       json = JSON.parse(File.read("spec/lib/#{file}.json"))
       pretty_json = Forcifier::JsonMassager.deforce_json(json)
