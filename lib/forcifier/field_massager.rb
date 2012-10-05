@@ -14,7 +14,7 @@ module Forcifier
 	  #   - ++ ->
 	  #
 		def self.enforce_fields(fields)
-			fields.downcase.split(',').enforce!(STANDARD_FIELDS).join(',')
+			fields.downcase.split(',').enforce(STANDARD_FIELDS).join(',')
 		end
 
 	  #
@@ -27,7 +27,7 @@ module Forcifier
 	  #   - ++ ->
 	  #
 		def self.deforce_fields(fields)
-			fields.downcase.split(',').deforce!.join(',')
+			fields.downcase.split(',').deforce.join(',')
 		end
 
 	end
