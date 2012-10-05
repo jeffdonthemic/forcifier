@@ -1,7 +1,8 @@
 require 'spec_helper'
+require 'json'
 
 describe Forcifier do
-	
+
 	it "should deforce field names with __c correctly" do
 		fields = Forcifier::FieldMassager.deforce_fields('id,name,field1__c')
 		fields.should == 'id,name,field1'
@@ -21,12 +22,18 @@ describe Forcifier do
 		json = [{'name' => 'jeffdonthemic', 'total_wins__c' => 4}]
 		pretty_json = Forcifier::JsonMassager.deforce_json(json)
 		pretty_json.should == [{'name' => 'jeffdonthemic', 'total_wins' => 4}]
-	end	
+	end
 
 	it "should deforce json with related json correctly" do
 		json = [{'name' => 'jeffdonthemic', 'total_wins__c' => 4}, 'challenges__r' => {'name' => 'some challenge', 'prize__c' => 1001}]
 		pretty_json = Forcifier::JsonMassager.deforce_json(json)
 		pretty_json.should == [{'name' => 'jeffdonthemic', 'total_wins' => 4}, 'challenges__r' => {'name' => 'some challenge', 'prize' => 1001}]
-	end		
+	end
+
+#	it "should deforce json with remote json correctly" do
+#	  json = JSON.parse(File.read('spec/lib/challenges.json'))
+#    pretty_json = Forcifier::JsonMassager.deforce_json(json)
+#    puts pretty_json
+#	end
 
 end

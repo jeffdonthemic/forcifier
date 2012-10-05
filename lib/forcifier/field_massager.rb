@@ -1,5 +1,5 @@
 module Forcifier
-  
+
 	class FieldMassager
 
 		STANDARD_FIELDS = %w(id isdeleted name createddate createdbyid lastmodifieddate lastmodifiedbyid systemmodstamp lastactivitydate)
@@ -12,17 +12,9 @@ module Forcifier
 	  #   - comma separated list of fields "id,name,wins__c"
 	  # * *Raises* :
 	  #   - ++ ->
-	  #  
+	  #
 		def self.enforce_fields(fields)
-			forced_fields = []
-			fields.downcase.split(',').each do |f|
-				if STANDARD_FIELDS.include?(f)
-					forced_fields << f
-				else
-					forced_fields << "#{f}__c"
-				end
-			end
-			forced_fields.join(",")
+			fields.downcase.split(',').enforce!(STANDARD_FIELDS).join(',')
 		end
 
 	  #
@@ -33,14 +25,10 @@ module Forcifier
 	  #   - comma separated list of fields "id,name,wins"
 	  # * *Raises* :
 	  #   - ++ ->
-	  #  
+	  #
 		def self.deforce_fields(fields)
-			deforced_fields = []
-			fields.downcase.split(',').each do |f|
-				deforced_fields << f.gsub('__c','')
-			end
-			deforced_fields.join(",")		
-		end		
+			fields.downcase.split(',').deforce!.join(',')
+		end
 
 	end
 
