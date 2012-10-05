@@ -10,6 +10,9 @@ class Hash
     keys.each do |key|
       self[(key.downcase.gsub('__c','') rescue key) || key] = delete(key)
       if self[key].is_a?(Hash) then self[key].deforce_keys! end
+      if self[key].is_a?(Array)
+        self[key].each { |record| record.deforce_keys! if record.is_a?(Hash) }
+      end
     end
     self
   end
