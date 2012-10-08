@@ -1,3 +1,5 @@
 require "forcifier/version"
 require "forcifier/field_massager"
 require "forcifier/json_massager"
+require "forcifier/core_extensions/array"
+require "forcifier/core_extensions/hash"
