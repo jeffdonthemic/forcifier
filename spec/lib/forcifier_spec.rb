@@ -38,4 +38,14 @@ describe Forcifier do
       pretty_json.should == JSON.parse(File.read("spec/lib/#{file}_deforced.json"))
     end
 	end
+
+	it "should enforce json correctly" do
+    json = JSON.parse(File.read("spec/lib/field_values.json"))
+    forced_json = Forcifier::JsonMassager.enforce_json(json)
+    forced_json.should have_key('status__c')
+    forced_json.should have_key('send_discussion_emails__c')
+    forced_json.should have_key('name')
+    forced_json.should have_key('id')
+	end
+
 end

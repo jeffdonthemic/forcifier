@@ -1,7 +1,8 @@
 module Forcifier
-	class FieldMassager
 
-		STANDARD_FIELDS = %w(id isdeleted name createddate createdbyid lastmodifieddate lastmodifiedbyid systemmodstamp lastactivitydate)
+	STANDARD_FIELDS = %w(id isdeleted name createddate createdbyid lastmodifieddate lastmodifiedbyid systemmodstamp lastactivitydate)
+
+	class FieldMassager
 
 		#
 		# Adds "__c" to all non-standard salesforce.com fields
