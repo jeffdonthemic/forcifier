@@ -1,4 +1,4 @@
-# Forcifier
+# Forcifier [![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/jeffdonthemic/forcifier)
 
 Forcifier is a gem that provides utility functions for dealing with Force.com fields to make them pretty and easier to work with.
 
