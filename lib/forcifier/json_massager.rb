@@ -23,7 +23,7 @@ module Forcifier
 		end
 
 		#
-		# Adds "__c" to all standard salesforce.com fields
+		# Adds "__c" to all non-standard salesforce.com fields
 		# * *Args*    :
 		#   - json -> The JSON to 'enforce'
 		# * *Returns* :
