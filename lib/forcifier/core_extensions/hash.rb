@@ -16,7 +16,7 @@ class Hash
 
   def enforce_keys!
     keys.each do |key|
-      new_key = (if !STANDARD_FIELDS.include?key then key + '__c' end) || key
+      new_key = (if !STANDARD_FIELDS.include?key.downcase then key + '__c' end) || key
       self[new_key] = delete(key)
       if self[new_key].is_a?(Hash) then self[new_key].enforce_keys! end
       if self[new_key].is_a?(Array)
