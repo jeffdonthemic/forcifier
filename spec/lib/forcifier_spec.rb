@@ -4,8 +4,8 @@ require 'json'
 describe Forcifier do
 
 	it "should deforce field names with __c correctly" do
-		fields = Forcifier::FieldMassager.deforce_fields('id,name,field1__c')
-		fields.should == 'id,name,field1'
+		fields = Forcifier::FieldMassager.deforce_fields('id,name,field1__c,ns__ctest__c')
+		fields.should == 'id,name,field1,ns__ctest'
 	end
 
 	it "should deforce fields names with capital letters to lowercase" do
