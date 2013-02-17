@@ -1,6 +1,6 @@
 module Forcifier
 
-	STANDARD_FIELDS = %w(id isdeleted name createddate createdbyid lastmodifieddate lastmodifiedbyid systemmodstamp lastactivitydate)
+	STANDARD_FIELDS = %w(id isdeleted name createddate createdbyid lastmodifieddate lastmodifiedbyid systemmodstamp lastactivitydate currencyisocode)
 
 	class FieldMassager
 
