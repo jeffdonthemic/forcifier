@@ -4,8 +4,8 @@ require 'json'
 describe Forcifier do
 
 	it "should deforce field names with __c correctly" do
-		fields = Forcifier::FieldMassager.deforce_fields('id,name,field1__c')
-		fields.should == 'id,name,field1'
+		fields = Forcifier::FieldMassager.deforce_fields('id,name,field1__c,ns__ctest__c')
+		fields.should == 'id,name,field1,ns__ctest'
 	end
 
 	it "should deforce fields names with capital letters to lowercase" do
@@ -19,15 +19,15 @@ describe Forcifier do
 	end
 
 	it "should deforce json correctly" do
-		json = [{'name' => 'jeffdonthemic', 'total_wins__c' => 4}]
+		json = [{'name' => 'jeffdonthemic', 'total_wins__c' => 4, 'ns__ctest__c' => true}]
 		pretty_json = Forcifier::JsonMassager.deforce_json(json)
-		pretty_json.should == [{'name' => 'jeffdonthemic', 'total_wins' => 4}]
+		pretty_json.should == [{'name' => 'jeffdonthemic', 'total_wins' => 4, 'ns__ctest' => true}]
 	end
 
 	it "should deforce json with related json correctly" do
-		json = [{'name' => 'jeffdonthemic', 'total_wins__c' => 4}, 'challenges__r' => {'name' => 'some challenge', 'prize__c' => 1001}]
+		json = [{'name' => 'jeffdonthemic', 'total_wins__c' => 4}, 'challenges__r' => {'name' => 'some challenge', 'prize__c' => 1001, 'ns__ctest__c' => true}]
 		pretty_json = Forcifier::JsonMassager.deforce_json(json)
-		pretty_json.should == [{'name' => 'jeffdonthemic', 'total_wins' => 4}, 'challenges__r' => {'name' => 'some challenge', 'prize' => 1001}]
+		pretty_json.should == [{'name' => 'jeffdonthemic', 'total_wins' => 4}, 'challenges__r' => {'name' => 'some challenge', 'prize' => 1001, 'ns__ctest' => true}]
 	end
 
 	it "should deforce json with remote json correctly" do
