@@ -4,6 +4,6 @@ class Array
   end
 
   def deforce
-    self.each { |x| x.gsub!('__c', '') }
+    self.each { |x| x.gsub!(/__c$/, '') }
   end
 end
