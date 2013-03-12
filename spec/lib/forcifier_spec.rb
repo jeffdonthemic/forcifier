@@ -14,8 +14,8 @@ describe Forcifier do
 	end
 
 	it "should enforce non-standard fields correctly" do
-		fields = Forcifier::FieldMassager.enforce_fields('id,field1,name,field2')
-		fields.should == 'id,field1__c,name,field2__c'
+		fields = Forcifier::FieldMassager.enforce_fields('id,field1,name,field2,currencyisocode')
+		fields.should == 'id,field1__c,name,field2__c,currencyisocode'
 	end
 
 	it "should deforce json correctly" do
